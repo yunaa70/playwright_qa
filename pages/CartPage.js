@@ -1,6 +1,6 @@
 const { BasePage } = require('./BasePage');
 
-// 장바구니 화면.
+// 장바구니 화면
 class CartPage extends BasePage {
   async getItemCount() {
     return this.page.getByTestId('inventory-item').count();

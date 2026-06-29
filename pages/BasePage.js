@@ -1,5 +1,5 @@
-// 모든 Page Object의 부모.
-// Playwright는 액션에 auto-wait이 내장돼 있어, 여기선 공통 동작만 얇게 감싼다.
+// 모든 Page Object의 부모
+// Playwright는 액션에 auto-wait이 내장돼 있어, 여기선 공통 동작만 작동한다.
 class BasePage {
   constructor(page) {
     this.page = page;
