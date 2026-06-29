@@ -1,4 +1,5 @@
-// 03. 장바구니 — 담기/배지/표시/삭제.
+// 03. 장바구니 — 담기/배지/표시/삭제
+
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 const { InventoryPage } = require('../pages/InventoryPage');
@@ -16,20 +17,20 @@ test.describe('03. 장바구니', () => {
     cart = new CartPage(page);
   });
 
-  test('[TC-CART-001] 상품을 담으면 배지 수가 1이 된다', async () => {
+  test('[TC-CART-001] 상품 담기 시 배지 수 1 노출', async () => {
     await inventory.addFirstProductToCart();
 
     await expect(await inventory.getCartBadgeCount()).toBe('1');
   });
 
-  test('[TC-CART-002] 담은 상품이 장바구니에 표시된다', async () => {
+  test('[TC-CART-002] 담은 상품이 장바구니에 노출', async () => {
     await inventory.addFirstProductToCart();
     await inventory.goToCart();
 
     await expect(await cart.isItemDisplayed()).toBe(true);
   });
 
-  test('[TC-CART-003] 장바구니에서 상품을 삭제하면 비워진다', async () => {
+  test('[TC-CART-003] 장바구니에서 상품을 삭제하면 상품 미노출', async () => {
     await inventory.addFirstProductToCart();
     await inventory.goToCart();
     await cart.removeFirstItem();

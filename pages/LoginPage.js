@@ -1,6 +1,6 @@
 const { BasePage } = require('./BasePage');
 
-// 로그인 화면. SauceDemo는 진입 시 바로 로그인 폼이 뜬다.
+// 로그인 화면 : SauceDemo는 진입 시 로그인 창이 노출됨
 class LoginPage extends BasePage {
   async open() {
     await this.goto('/');

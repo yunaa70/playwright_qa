@@ -1,6 +1,6 @@
 const { BasePage } = require('./BasePage');
 
-// 상품 목록 화면. 로그인 성공 시 진입한다.
+// 상품 목록 화면 : 로그인 성공 시 진입
 class InventoryPage extends BasePage {
   async isLoaded() {
     return this.page.getByTestId('inventory-list').isVisible();
@@ -10,7 +10,7 @@ class InventoryPage extends BasePage {
     return this.page.getByTestId('inventory-item').count();
   }
 
-  // 첫 상품을 장바구니에 담는다 (담기 버튼은 .btn_inventory 안의 add-to-cart)
+  // 장바구니에 상품 담기 (담기 버튼은 .btn_inventory 안의 add-to-cart)
   async addFirstProductToCart() {
     await this.page.locator('[data-test^="add-to-cart"]').first().click();
   }

@@ -1,6 +1,6 @@
 const { BasePage } = require('./BasePage');
 
-// 결제: 배송정보 입력 → 검토 → 완료
+// 결제 화면 : 배송정보 입력 -> 검토 -> 완료
 class CheckoutPage extends BasePage {
   async enterInfo(firstName, lastName, zip) {
     if (firstName !== '') await this.fillByTestId('firstName', firstName);
