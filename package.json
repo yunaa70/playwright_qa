@@ -1,0 +1,16 @@
+{
+  "name": "playwright-saucedemo",
+  "version": "1.0.0",
+  "description": "SauceDemo 웹 E2E 자동화 (Playwright, POM)",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "keywords": ["playwright", "e2e", "pom", "qa", "web-automation", "saucedemo"],
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
