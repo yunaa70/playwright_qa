@@ -3,33 +3,33 @@ const { BasePage } = require('./BasePage');
 // 결제 화면 : 배송정보 입력 -> 검토 -> 완료
 class CheckoutPage extends BasePage {
   async enterInfo(firstName, lastName, zip) {
-    if (firstName !== '') await this.fillByTestId('firstName', firstName);
-    if (lastName !== '') await this.fillByTestId('lastName', lastName);
-    if (zip !== '') await this.fillByTestId('postalCode', zip);
+    if (firstName !== '') await this.fill('#first-name', firstName);
+    if (lastName !== '') await this.fill('#last-name', lastName);
+    if (zip !== '') await this.fill('#postal-code', zip);
   }
 
   async continue() {
-    await this.clickByTestId('continue');
+    await this.click('#continue');
   }
 
   async finish() {
-    await this.clickByTestId('finish');
+    await this.click('#finish');
   }
 
   async isErrorDisplayed() {
-    return this.isVisibleByTestId('error');
+    return this.isVisible('[data-test="error"]');
   }
 
   async isOverviewDisplayed() {
-    return this.page.getByTestId('checkout-summary-container').isVisible();
+    return this.page.locator('.checkout_summary_container').isVisible();
   }
 
   async isOrderComplete() {
-    return this.page.getByTestId('complete-header').isVisible();
+    return this.page.locator('.complete-header').isVisible();
   }
 
   async getCompleteText() {
-    return this.textByTestId('complete-header');
+    return this.text('.complete-header');
   }
 }
 

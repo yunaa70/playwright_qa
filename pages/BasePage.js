@@ -2,29 +2,39 @@
 // Playwright는 액션에 auto-wait이 포함되어 있어, 여기선 공통 동작만 작동한다.
 
 class BasePage {
-  constructor(page) {
-    this.page = page;
-  }
 
-  async goto(path = '/') {
-    await this.page.goto(path);
-  }
+constructor(page) {
 
-  async clickByTestId(testId) {
-    await this.page.getByTestId(testId).click();
-  }
+this.page = page;
 
-  async fillByTestId(testId, value) {
-    await this.page.getByTestId(testId).fill(value);
-  }
-
-  async textByTestId(testId) {
-    return this.page.getByTestId(testId).innerText();
-  }
-
-  async isVisibleByTestId(testId) {
-    return this.page.getByTestId(testId).isVisible();
-  }
 }
+async goto(url = 'https://www.saucedemo.com/') {
+    await this.page.goto(url);
+  }
 
+  async click(selector) {
+    await this.page.locator(selector).click();
+  }
+
+  async fill(selector, value) {
+    await this.page.locator(selector).fill(value);
+  }
+
+  async text(selector) {
+    return this.page.locator(selector).innerText();
+  }
+
+  async isVisible(selector) {
+    return this.page.locator(selector).isVisible();
+  }
+
+  async waitVisible(selector) {
+    await this.page.locator(selector).waitFor({ state: 'visible' });
+  }
+
+  async count(selector) {
+    return this.page.locator(selector).count();
+  }
+
+}
 module.exports = { BasePage };

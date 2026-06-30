@@ -3,11 +3,11 @@ const { BasePage } = require('./BasePage');
 // 장바구니 화면
 class CartPage extends BasePage {
   async getItemCount() {
-    return this.page.getByTestId('inventory-item').count();
+    return this.page.locator('.cart_item').count();
   }
 
   async isItemDisplayed() {
-    return this.page.getByTestId('inventory-item-name').first().isVisible();
+    return this.page.locator('.inventory_item_name').first().isVisible();
   }
 
   async removeFirstItem() {
@@ -15,11 +15,11 @@ class CartPage extends BasePage {
   }
 
   async checkout() {
-    await this.clickByTestId('checkout');
+    await this.click('#checkout');
   }
 
   async continueShopping() {
-    await this.clickByTestId('continue-shopping');
+    await this.click('#continue-shopping');
   }
 }
 
