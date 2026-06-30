@@ -3,7 +3,8 @@ const { BasePage } = require('./BasePage');
 // 로그인 화면 : SauceDemo는 진입 시 로그인 창이 노출됨
 class LoginPage extends BasePage {
   async open() {
-    await this.goto('/');
+    await this.page.goto('https://www.saucedemo.com/');
+    await this.page.locator('#user-name').waitFor({ state: 'visible' });
   }
 
   async login(username, password) {
