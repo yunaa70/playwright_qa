@@ -15,6 +15,10 @@ class InventoryPage extends BasePage {
     await this.page.locator('[data-test^="add-to-cart"]').first().click();
   }
 
+  async addProductByIndex(index) {
+    await this.page.locator('[data-test^="add-to-cart"]').nth(index).click();
+  }
+
   async getCartBadgeCount() {
     const badge = this.page.locator('.shopping_cart_badge');
     return (await badge.isVisible()) ? badge.innerText() : '0';
@@ -31,6 +35,16 @@ class InventoryPage extends BasePage {
 
   async getFirstProductName() {
     return this.page.locator('.inventory_item_name').first().innerText();
+  }
+  
+  async getAllPrices() {
+    const texts = await this.page.locator('.inventory_item_price').allInnerTexts();
+    return texts.map((t) => parseFloat(t.replace(/[^0-9.]/g, '')));
+  }
+
+  // 화면의 모든 상품명을 배열로 반환
+  async getAllProductNames() {
+    return this.page.locator('.inventory_item_name').allInnerTexts();
   }
 }
 

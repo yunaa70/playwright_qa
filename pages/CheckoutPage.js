@@ -31,6 +31,22 @@ class CheckoutPage extends BasePage {
   async getCompleteText() {
     return this.text('.complete-header');
   }
+
+  // 결제 화면 금액들을 숫자로 반환
+  async getItemTotal() {
+    const t = await this.text('.summary_subtotal_label');
+    return parseFloat(t.replace(/[^0-9.]/g, ''));
+  }
+
+  async getTax() {
+    const t = await this.text('.summary_tax_label');
+    return parseFloat(t.replace(/[^0-9.]/g, ''));
+  }
+
+  async getTotal() {
+    const t = await this.text('.summary_total_label');
+    return parseFloat(t.replace(/[^0-9.]/g, ''));
+  }
 }
 
 module.exports = { CheckoutPage };

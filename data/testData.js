@@ -4,6 +4,7 @@
 const ACCOUNTS = {
   standard: { username: 'standard_user', password: 'secret_sauce' },
   locked: { username: 'locked_out_user', password: 'secret_sauce' }, // 잠긴 계정
+  problem:  { username: 'problem_user', password: 'secret_sauce' },
 };
 
 const CHECKOUT = {
